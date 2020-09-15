@@ -1,9 +1,5 @@
 ﻿using UnityEngine;
 
-//USE:
-//Floor tags make you grounded
-//wall tags make it so you can't jump up them
-
 public class Player : MonoBehaviour
 {
 	//Movement variables
@@ -31,6 +27,7 @@ public class Player : MonoBehaviour
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
+		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 	}
 	void FixedUpdate()
 	{
@@ -58,7 +55,6 @@ public class Player : MonoBehaviour
 
 	void CameraMovement(float horizontalRotation, float verticalRotation)
 	{
-		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 		if (verticalRotation < 90 && verticalRotation > -90)
 		{
 			camera.transform.localRotation = Quaternion.Euler(-verticalRotation, 0, 0);
