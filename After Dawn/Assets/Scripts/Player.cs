@@ -23,31 +23,14 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	void Update()
 	{
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
 		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
-
-		//Cursor Lock
-		if (Input.GetKeyDown("escape"))
-		{
-			cursorLocked = !cursorLocked;
-		}
-
-		if (cursorLocked == true)
-		{
-			Cursor.visible = false;
-			Cursor.lockState = CursorLockMode.Locked;
-		}
-		else if (cursorLocked == false)
-		{
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
-		}
 	}
 	void FixedUpdate()
 	{
@@ -62,13 +45,11 @@ public class Player : MonoBehaviour
 		Vector3 direction = input.normalized;
 		Vector3 velocity = direction * speed;
 		Vector3 movement = velocity * Time.deltaTime;
-		rb.velocity = new Vector3(0, rb.velocity.y, 0);
-		transform.Translate(movement);
-
+		rb.MovePosition(transform.position + transform.TransformDirection(movement));
 		//Jumping
 		if (grounded)
 		{
-			if (Input.GetKey("space"))
+			if (Input.GetButton("Jump") == true)
 			{
 				rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
 			}
@@ -77,14 +58,7 @@ public class Player : MonoBehaviour
 
 	void CameraMovement(float horizontalRotation, float verticalRotation)
 	{
-		if (verticalRotation > 90)
-		{
-			verticalRotation = 90;
-		}
-		else if (verticalRotation < -90)
-		{
-			verticalRotation = -90;
-		}
+		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 		if (verticalRotation < 90 && verticalRotation > -90)
 		{
 			camera.transform.localRotation = Quaternion.Euler(-verticalRotation, 0, 0);
