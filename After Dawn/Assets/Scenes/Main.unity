@@ -820,10 +820,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23aecc595016dc4883c52819b6f6a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  jumpForce: 5
+  speed: 5
+  runAdd: 192.36
+  jumpForce: 4
   camera: {fileID: 963194227}
-  camSpeed: 7
+  camSpeed: 5
 --- !u!136 &914255792
 CapsuleCollider:
   m_ObjectHideFlags: 0

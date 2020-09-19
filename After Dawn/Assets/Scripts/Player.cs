@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
 	//Movement variables
 	public float speed;
+	public float runAdd;
 	public float jumpForce;
 	bool grounded = true;
 	Vector3 keys;
@@ -38,7 +39,6 @@ public class Player : MonoBehaviour
 	void PlayerMovement(Vector3 input)
 	{
 		//X and Z movement
-		
 		Vector3 direction = input.normalized;
 		Vector3 velocity = direction * speed;
 		Vector3 movement = velocity * Time.deltaTime;
