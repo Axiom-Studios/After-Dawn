@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
 	bool grounded = true;
 	Vector3 keys;
 
+	public float staminaMax;
+	public float staminaDrain;
+	public float staminaCharge;
+	float stamina;
+
 	//Camera variables
 	public Camera camera;
 	public float camSpeed;
@@ -22,18 +27,26 @@ public class Player : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
+		stamina = staminaMax;
 	}
 
 	void Update()
 	{
-		if (Input.GetButton("Run"))
+		//Running / Stamina
+		if (Input.GetButton("Run") && stamina > 0)
 		{
+			stamina -= staminaDrain * Time.deltaTime;
 			speed = runSpeed;
 		}
-        else
-        {
+		else
+		{
+			if (stamina < staminaMax)
+            {
+				stamina += staminaCharge * Time.deltaTime;
+            }
 			speed = walkSpeed;
-        }
+		}
+		print(stamina);
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
