@@ -3,9 +3,10 @@
 public class Player : MonoBehaviour
 {
 	//Movement variables
-	public float speed;
-	public float runAdd;
+	public float walkSpeed;
+	public float runSpeed;
 	public float jumpForce;
+	float speed;
 	bool grounded = true;
 	Vector3 keys;
 
@@ -25,6 +26,14 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetButton("Run"))
+		{
+			speed = runSpeed;
+		}
+        else
+        {
+			speed = walkSpeed;
+        }
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
