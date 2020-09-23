@@ -826,7 +826,7 @@ MonoBehaviour:
   staminaMax: 20
   staminaDrain: 7
   staminaCharge: 5
-  camera: {fileID: 963194227}
+  playerCamera: {fileID: 963194227}
   camSpeed: 6
 --- !u!136 &914255792
 CapsuleCollider:

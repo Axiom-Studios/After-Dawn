@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
         {
 			canRun = true;
         }
-		print(stamina);
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
