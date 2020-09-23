@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
-	bool cursorLocked = true;
 	Rigidbody rb;
 
 	private void Start()
