@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 	public float runSpeed;
 	public float jumpForce;
 	float speed;
+	bool canRun = true;
 	bool grounded = true;
 	Vector3 keys;
 
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 	float stamina;
 
 	//Camera variables
-	public Camera camera;
+	public Camera playerCamera;
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
@@ -32,8 +33,8 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
-		//Running / Stamina
-		if (Input.GetButton("Run") && stamina > 0)
+		//Running and Stamina
+		if (Input.GetButton("Run") && canRun == true)
 		{
 			stamina -= staminaDrain * Time.deltaTime;
 			speed = runSpeed;
@@ -41,11 +42,19 @@ public class Player : MonoBehaviour
 		else
 		{
 			if (stamina < staminaMax)
-            {
+			{
 				stamina += staminaCharge * Time.deltaTime;
-            }
+			}
 			speed = walkSpeed;
 		}
+		if (stamina <= 0)
+        {
+			canRun = false;
+        }
+		else if (stamina >= staminaMax)
+        {
+			canRun = true;
+        }
 		print(stamina);
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
@@ -79,7 +88,7 @@ public class Player : MonoBehaviour
 	{
 		if (verticalRotation < 90 && verticalRotation > -90)
 		{
-			camera.transform.localRotation = Quaternion.Euler(-verticalRotation, 0, 0);
+			playerCamera.transform.localRotation = Quaternion.Euler(-verticalRotation, 0, 0);
 		}
 		transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
 	}
