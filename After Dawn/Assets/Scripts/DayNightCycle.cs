@@ -10,7 +10,7 @@ public class DayNightCycle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sunset = Time.time + 60;
+        sunset = Time.time + 300;
         rot = transform.rotation.eulerAngles;
     }
 
@@ -20,10 +20,10 @@ public class DayNightCycle : MonoBehaviour
         if (Time.time >= sunset)
         {
             night = !night;
-            sunset = Time.time + 60;
+            sunset = Time.time + 300;
         }
 
-        rot.z = ((sunset - Time.time) / 60) * 180;
+        rot.z = ((sunset - Time.time) / 300) * 180;
         if (!night){
             rot.z += 180;
         }
