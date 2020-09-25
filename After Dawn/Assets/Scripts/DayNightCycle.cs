@@ -18,12 +18,13 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
         if (Time.time >= sunset)
         {
             night = !night;
             sunset = Time.time + dayLength;
         }
-
+        //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
         rot.z = ((sunset - Time.time) / dayLength) * 180;
         if (!night){
             rot.z += 180;
@@ -32,6 +33,7 @@ public class DayNightCycle : MonoBehaviour
     }
     void AddTime(float timeAdded)
     {
+        //place-holder function, isn't really needed but can be used to add time to the day from within this script.
         sunset += timeAdded;
     }
 }

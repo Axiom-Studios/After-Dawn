@@ -17,10 +17,12 @@ public class SphereSpawnManager : MonoBehaviour
     void Update()
     {
         if (Time.time >= sphereSpawn){
+            //sphereSpawnPos is a Vector3 which determines where the sphere will spawn. Right now its x and z are random, but this can be changed.
             sphereSpawnPos.x = Random.Range(-9, 9);
             sphereSpawnPos.y = 2;
             sphereSpawnPos.z = Random.Range(-9, 9);
             Instantiate(TimeSphere, sphereSpawnPos, transform.rotation);
+            //waits 5 sec. to spawn another.
             sphereSpawn = Time.time + 5;
         }
     }

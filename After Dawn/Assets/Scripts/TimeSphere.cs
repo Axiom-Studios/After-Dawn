@@ -10,16 +10,10 @@ public class TimeSphere : MonoBehaviour
     {
         timeAdded = Random.Range(1, 5);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player"){
+            //when coliding with player, add time to the day and destroy the sphere.
             DayNightCycle.sunset += timeAdded;
             Destroy(gameObject);
         }    
