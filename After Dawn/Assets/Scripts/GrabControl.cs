@@ -53,7 +53,7 @@ public class GrabControl : MonoBehaviour
 				}
 			}
 		}
-		if (Input.GetButtonUp("Throw")) {
+		if (Input.GetButtonUp("Throw") && throwPrep == true) {
 			throwPrep = false;
 			grabbed.transform.localPosition = new Vector3(0, 0, throwStartDistance);
 			grabbed.transform.rotation = transform.rotation;
