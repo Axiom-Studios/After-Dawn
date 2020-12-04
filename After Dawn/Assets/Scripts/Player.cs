@@ -47,16 +47,16 @@ public class Player : MonoBehaviour
 			speed = walkSpeed;
 		}
 		if (stamina <= 0)
-        {
+		{
 			canRun = false;
-        }
+		}
 		else if (stamina >= staminaMax)
-        {
+		{
 			canRun = true;
-        }
+		}
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
-		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
+		horizontalRotation += Input.GetAxis("Camera X") * camSpeed;
+		verticalRotation += Input.GetAxis("Camera Y") * camSpeed;
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 	}
 	void FixedUpdate()
