@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
 			canRun = true;
 		}
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-		horizontalRotation += Input.GetAxis("Camera X") * camSpeed;
-		verticalRotation += Input.GetAxis("Camera Y") * camSpeed;
+		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
+		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 	}
 	void FixedUpdate()
