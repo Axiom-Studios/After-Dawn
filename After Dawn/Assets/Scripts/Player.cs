@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		Cursor.lockState = CursorLockMode.Locked;
 		stamina = staminaMax;
 	}
 
@@ -55,8 +54,11 @@ public class Player : MonoBehaviour
 			canRun = true;
         }
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-		horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
-		verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
+		if (!(PauseMenu.paused))
+		{
+			horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
+			verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
+		}
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 	}
 	void FixedUpdate()
