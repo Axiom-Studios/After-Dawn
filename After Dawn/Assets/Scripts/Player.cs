@@ -46,13 +46,13 @@ public class Player : MonoBehaviour
 			speed = walkSpeed;
 		}
 		if (stamina <= 0)
-        {
+		{
 			canRun = false;
-        }
+		}
 		else if (stamina >= staminaMax)
-        {
+		{
 			canRun = true;
-        }
+		}
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		if (!(PauseMenu.paused))
 		{
