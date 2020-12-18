@@ -1,18 +1,31 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 public class CutsceneControl : MonoBehaviour
 {
-	GameObject sceneSprite;
+	public GameObject cutscenes;
+	GameObject currentScene;
+	GameObject currentSprite;
+	string sceneName;
+	bool active;
+	int max;
+	int currentNum = 1;
 	
 	void Start(){
-		sceneSprite = GameObject.Find("/Canvas/Cutscenes");
-		sceneSprite.SetActive(false);
+		cutscenes.SetActive(false);
 	}
+
 	void Initialize(string name, int length){
-		int current = 1;
-		while (current < length){
-			sceneSprite = GameObject.Find("/Canvas/Cutscenes/snowmen/");
-			sceneSprite.SetActive(false);
+		max = length;
+		sceneName = name;
+		active = true;
+		cutscenes.SetActive(true);
+		currentScene = GameObject.Find("/Canvas/Cutscene/" + name);
+		
+	}
+
+	void Next(){
+		if (active){
+			
 		}
 	}
 }
