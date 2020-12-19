@@ -1,31 +1,26 @@
 ﻿using UnityEngine;
-
 public class InteractControl : MonoBehaviour
 {
 	string InteractName;
-
 	new Camera camera;
-	private void Start()
-	{
+	CutsceneControl cutscenes;
+
+	private void Start(){
 		camera = GetComponent<Camera>();
+		cutscenes = FindObjectOfType<CutsceneControl>();
 	}
 
-	void Update()
-	{
+	void Update(){
 		Interaction();
 	}
 
-	void Interaction() //Controls calling of interaction functions
-	{
-		if (Input.GetButtonDown("Interact"))
-		{
+	void Interaction(){ //Controls calling of interaction functions
+		if (Input.GetButtonDown("Interact")){
 			Ray interact = camera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit interactInfo;
 
-			if (Physics.Raycast(interact, out interactInfo, 5))
-			{
-				if (interactInfo.collider.gameObject.tag == "Interactable")
-				{
+			if (Physics.Raycast(interact, out interactInfo, 5)){
+				if (interactInfo.collider.gameObject.tag == "Interactable"){
 					InteractName = interactInfo.collider.gameObject.name;
 					Invoke(InteractName, 0);
 				}
@@ -38,5 +33,9 @@ public class InteractControl : MonoBehaviour
 	void Box()
 	{
 		print("You opened a box");
+	}
+
+	void Snowmans(){
+		cutscenes.Initialize("snowmen", 3);
 	}
 }
