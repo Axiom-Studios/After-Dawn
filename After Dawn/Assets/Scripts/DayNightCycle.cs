@@ -25,7 +25,7 @@ public class DayNightCycle : MonoBehaviour
             sunset = Time.time + dayLength;
         }
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
-        rot.z = ((sunset - Time.time) / dayLength) * 180;
+        rot.z = (((sunset - Time.time) / dayLength) * 180) - 10;
         if (!night){
             rot.z += 180;
         }
