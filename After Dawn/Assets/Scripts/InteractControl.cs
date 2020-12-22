@@ -3,18 +3,16 @@ public class InteractControl : MonoBehaviour
 {
 	string InteractName;
 	new Camera camera;
-	CutsceneControl cutscenes;
 
-	private void Start(){
+	void Start(){
 		camera = GetComponent<Camera>();
-		cutscenes = FindObjectOfType<CutsceneControl>();
 	}
 
 	void Update(){
 		Interaction();
 	}
 
-	void Interaction(){ //Controls calling of interaction functions
+	public void Interaction(){ //Controls calling of interaction functions
 		if (Input.GetButtonDown("Interact")){
 			Ray interact = camera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit interactInfo;
@@ -36,6 +34,6 @@ public class InteractControl : MonoBehaviour
 	}
 
 	void Snowmans(){
-		cutscenes.Initialize("snowmen", 3);
+		CutsceneControl.Initialize("snowmen", 3);
 	}
 }

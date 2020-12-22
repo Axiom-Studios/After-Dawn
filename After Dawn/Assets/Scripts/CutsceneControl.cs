@@ -2,30 +2,32 @@
 
 public class CutsceneControl : MonoBehaviour
 {
+	//public static Initialize variables
+	public static int max;
+	public static GameObject buttons;
+	public static GameObject currentScene;
+	public static GameObject currentSprite;
+
+
+	//Other variables
 	public GameObject cutscenes;
-	public GameObject buttons;
-	GameObject currentScene;
-	GameObject currentSprite;
 	GameObject nextButton;
 	GameObject backButton;
-	string sceneName;
-	bool active;
-	int max;
-	int currentNum;
+	static int currentNum;
 	
 	void Start(){
+		buttons = GameObject.Find("/Canvas/Cutscenes/Buttons");
 		cutscenes.SetActive(false);
 		backButton = buttons.transform.GetChild(0).gameObject;
 		nextButton = buttons.transform.GetChild(1).gameObject;
 	}
 
-	public void Initialize(string name, int length){
+	public static void Initialize(string name, int length){
 		max = length - 1;
-		sceneName = name;
-		active = true;
+		currentNum = 0;
 		buttons.SetActive(true);
 		currentScene = GameObject.Find("/Canvas/Cutscene/" + name);
-		currentSprite = currentScene.transform.GetChild (0).gameObject;
+		currentSprite = currentScene.transform.GetChild(currentNum).gameObject;
 		currentSprite.SetActive(true);
 	}
 

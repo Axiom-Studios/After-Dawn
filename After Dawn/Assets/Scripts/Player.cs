@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		stamina = staminaMax;
+		Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 	}
 
 	void Update()
