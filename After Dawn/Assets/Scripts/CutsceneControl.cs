@@ -13,11 +13,11 @@ public class CutsceneControl : MonoBehaviour
 	public GameObject cutscenes;
 	GameObject nextButton;
 	GameObject backButton;
-	static int currentNum;
+	public static int currentNum;
 	
 	void Start(){
 		buttons = GameObject.Find("/Canvas/Cutscenes/Buttons");
-		cutscenes.SetActive(false);
+		//cutscenes.SetActive(false);
 		backButton = buttons.transform.GetChild(0).gameObject;
 		nextButton = buttons.transform.GetChild(1).gameObject;
 	}
@@ -26,8 +26,8 @@ public class CutsceneControl : MonoBehaviour
 		max = length - 1;
 		currentNum = 0;
 		buttons.SetActive(true);
-		currentScene = GameObject.Find("/Canvas/Cutscene/" + name);
-		currentSprite = currentScene.transform.GetChild(currentNum).gameObject;
+		currentScene = GameObject.Find("Snowmen");
+		currentSprite = GameObject.Find("1"); //currentScene.transform.GetChild(0).gameObject;
 		currentSprite.SetActive(true);
 	}
 

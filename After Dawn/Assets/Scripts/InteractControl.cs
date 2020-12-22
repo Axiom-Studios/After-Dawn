@@ -34,6 +34,6 @@ public class InteractControl : MonoBehaviour
 	}
 
 	void Snowmans(){
-		CutsceneControl.Initialize("snowmen", 3);
+		CutsceneControl.Initialize("Snowmen", 3);
 	}
 }
