@@ -17,7 +17,7 @@ public class CutsceneControl : MonoBehaviour
 	
 	void Start(){
 		buttons = GameObject.Find("/Canvas/Cutscenes/Buttons");
-		//cutscenes.SetActive(false);
+		cutscenes.SetActive(false);
 		backButton = buttons.transform.GetChild(0).gameObject;
 		nextButton = buttons.transform.GetChild(1).gameObject;
 	}
