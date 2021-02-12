@@ -12,7 +12,7 @@ public class TimeSphere : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player"){
+        if (other.gameObject.CompareTag("Player")){
             //when coliding with player, add time to the day and destroy the sphere.
             DayNightCycle.sunset += timeAdded;
             Destroy(gameObject);
