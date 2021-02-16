@@ -5,9 +5,11 @@ using UnityEngine;
 public class DayNightCycle : MonoBehaviour
 {
     public static float sunset;
-    private bool night = false;
+    public static bool night = false;
     private Vector3 rot;
     private float dayLength = 300;
+    public static int day = 0;
+    public GameObject dayText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +23,21 @@ public class DayNightCycle : MonoBehaviour
         //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
         if (Time.time >= sunset)
         {
-            night = !night;
+            night = true;
+            day += 1;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            dayText.SetActive(true);
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
             sunset = Time.time + dayLength;
         }
-        //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
-        rot.z = (((sunset - Time.time) / dayLength) * 180) - 10;
-        if (!night){
-            rot.z += 180;
+        if(!PauseMenu.paused){
+            dayText.SetActive(false);
+            night = false;
         }
+        //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
+        rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
         transform.rotation = Quaternion.Euler(rot);
     }
     void AddTime(float timeAdded)
