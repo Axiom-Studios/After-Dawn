@@ -18,19 +18,37 @@ public class Player : MonoBehaviour
 
 	//Camera variables
 	public Camera playerCamera;
+	public GameObject darkness;
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
 	Rigidbody rb;
 
+	private bool sleeping = false;
+	public Vector3 spawn = new Vector3(126, 4, -140);
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		stamina = staminaMax;
+		darkness.active = false;
 	}
 
 	void Update()
 	{
+		if (DayNightCycle.night)
+		{
+			sleeping = true;
+			darkness.active = true;
+		}
+		else
+		{
+			if (sleeping)
+			{
+				transform.position = spawn;
+				sleeping = false;
+			}
+			darkness.active = false;
+		}
 		//Running and Stamina
 		if (Input.GetButton("Run") && canRun == true)
 		{
@@ -110,6 +128,14 @@ public class Player : MonoBehaviour
 		if (collision.gameObject.tag != "wall")
 		{
 			grounded = false;
+		}
+	}
+
+	public void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Camp") && !sleeping)
+		{
+			DayNightCycle.sunset = Time.time;
 		}
 	}
 }
