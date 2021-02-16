@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Floor
-  - Wall
-  - Interactable
-  - Grabbable
-  - Camp
+  tags: []
   layers:
   - Default
   - TransparentFX
