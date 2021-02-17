@@ -90,8 +90,7 @@ public class Player : MonoBehaviour
 		//X and Z movement
 		Vector3 direction = input.normalized;
 		Vector3 velocity = direction * speed;
-		Vector3 movement = velocity * Time.deltaTime;
-		rb.MovePosition(transform.position + transform.TransformDirection(movement));
+		rb.velocity = transform.TransformDirection(velocity);
 		//Jumping
 		if (grounded)
 		{
