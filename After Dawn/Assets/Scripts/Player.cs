@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		stamina = staminaMax;
-		darkness.active = false;
+		darkness.SetActive(false);
 	}
 
 	void Update()
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 		if (DayNightCycle.night)
 		{
 			sleeping = true;
-			darkness.active = true;
+			darkness.SetActive(true);
 		}
 		else
 		{
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 				transform.position = spawn;
 				sleeping = false;
 			}
-			darkness.active = false;
+			darkness.SetActive(false);
 		}
 		//Running and Stamina
 		if (Input.GetButton("Run") && canRun == true)
@@ -90,11 +90,11 @@ public class Player : MonoBehaviour
 		//X and Z movement
 		Vector3 direction = input.normalized;
 		Vector3 velocity = direction * speed;
-		rb.velocity = transform.TransformDirection(velocity);
+		rb.velocity = transform.TransformDirection(velocity) + (Vector3.up * rb.velocity.y);
 		//Jumping
-		if (grounded)
+		if (Input.GetButton("Jump") == true)
 		{
-			if (Input.GetButton("Jump") == true)
+			if (grounded)
 			{
 				rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
 			}
