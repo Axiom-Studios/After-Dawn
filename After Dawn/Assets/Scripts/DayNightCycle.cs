@@ -38,6 +38,7 @@ public class DayNightCycle : MonoBehaviour
         }
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
         rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
+        RenderSettings.ambientIntensity = Mathf.Abs(90f - Mathf.Abs(rot.z + 90f)) / 180f + 0.5f;
         transform.rotation = Quaternion.Euler(rot);
     }
     void AddTime(float timeAdded)
