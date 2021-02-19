@@ -9,9 +9,12 @@ public class BarrierController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DayNightCycle.day == order)
+        // Remove for March release
+        /*if (DayNightCycle.day == order)
         {
             Destroy(gameObject);
         }
+        */
+
     }
 }
