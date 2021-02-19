@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -19,10 +20,13 @@ public class Player : MonoBehaviour
 	//Camera variables
 	public Camera playerCamera;
 	public GameObject darkness;
+	public GameObject endText;
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
 	Rigidbody rb;
+
+	public static bool gameWon = false;
 
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
@@ -135,6 +139,15 @@ public class Player : MonoBehaviour
 		if (other.gameObject.CompareTag("Camp") && !sleeping)
 		{
 			DayNightCycle.sunset = Time.time;
+		}
+		if (other.gameObject.CompareTag("Key"))
+		{
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+			gameWon = true;
+            endText.SetActive(true);
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
 		}
 	}
 }

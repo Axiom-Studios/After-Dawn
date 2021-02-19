@@ -9,6 +9,7 @@ TagManager:
   - Interactable
   - Grabbable
   - Camp
+  - Key
   layers:
   - Default
   - TransparentFX
