@@ -19,22 +19,29 @@ public class Player : MonoBehaviour
 
 	//Camera variables
 	public Camera playerCamera;
-	public GameObject darkness;
-	public GameObject endText;
+	
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
 	Rigidbody rb;
 
 	public static bool gameWon = false;
-
+	public GameObject darkness;
+	public GameObject endText;
+	public GameObject startText;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		stamina = staminaMax;
 		darkness.SetActive(false);
+		Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        startText.SetActive(true);
+        Time.timeScale = 0f;
+        PauseMenu.paused = true;
 	}
 
 	void Update()
@@ -80,6 +87,8 @@ public class Player : MonoBehaviour
 		{
 			horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 			verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
+			startText.SetActive(false);
+			endText.SetActive(false);
 		}
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 	}

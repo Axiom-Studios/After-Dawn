@@ -21,7 +21,7 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
         //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
-        if (Time.time >= sunset)
+        /*if (Time.time >= sunset)
         {
             night = true;
             day += 1;
@@ -36,6 +36,7 @@ public class DayNightCycle : MonoBehaviour
             dayText.SetActive(false);
             night = false;
         }
+        */
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
         rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
         RenderSettings.ambientIntensity = Mathf.Abs(90f - Mathf.Abs(rot.z + 90f)) / 180f + 0.5f;
