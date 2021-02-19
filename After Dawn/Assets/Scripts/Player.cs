@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+	public GameObject slider;
+	Slider sprint;
+
 	//Movement variables
 	public float walkSpeed;
 	public float runSpeed;
@@ -34,6 +38,8 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+		sprint = slider.GetComponent<Slider>();
+		sprint.maxValue = staminaMax;
 		rb = GetComponent<Rigidbody>();
 		stamina = staminaMax;
 		darkness.SetActive(false);
@@ -46,6 +52,7 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+		sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
 			sleeping = true;
