@@ -27,6 +27,11 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        if (Player.gameWon && !paused)
+        {
+            Player.gameWon = false;
+            SceneManager.LoadScene("Menu");
+        }
     }
     public void Resume()
     {

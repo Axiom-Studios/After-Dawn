@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrierController : MonoBehaviour
+public class KeyManager : MonoBehaviour
 {
-    public int order;
 
     // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        // Remove for March release
-        /*if (DayNightCycle.day == order)
+        if(other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
-        */
-
     }
 }

@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+	public GameObject slider;
+	Slider sprint;
+
 	//Movement variables
 	public float walkSpeed;
 	public float runSpeed;
@@ -18,23 +23,36 @@ public class Player : MonoBehaviour
 
 	//Camera variables
 	public Camera playerCamera;
-	public GameObject darkness;
+	
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
 	Rigidbody rb;
 
+	public static bool gameWon = false;
+	public GameObject darkness;
+	public GameObject endText;
+	public GameObject startText;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
+
 	private void Start()
 	{
+		sprint = slider.GetComponent<Slider>();
+		sprint.maxValue = staminaMax;
 		rb = GetComponent<Rigidbody>();
 		stamina = staminaMax;
 		darkness.SetActive(false);
+		Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        startText.SetActive(true);
+        Time.timeScale = 0f;
+        PauseMenu.paused = true;
 	}
 
 	void Update()
 	{
+		sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
 			sleeping = true;
@@ -76,6 +94,8 @@ public class Player : MonoBehaviour
 		{
 			horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 			verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
+			startText.SetActive(false);
+			endText.SetActive(false);
 		}
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 	}
@@ -135,6 +155,15 @@ public class Player : MonoBehaviour
 		if (other.gameObject.CompareTag("Camp") && !sleeping)
 		{
 			DayNightCycle.sunset = Time.time;
+		}
+		if (other.gameObject.CompareTag("Key"))
+		{
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+			gameWon = true;
+            endText.SetActive(true);
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
 		}
 	}
 }
