@@ -6,13 +6,13 @@ public class DayNightCycle : MonoBehaviour
 {
     public static float sunset;
     public static bool night = false;
-    public float dayLength;
+    public static float dayLength = 120f;
     public float minAmbientLight;
     public static int day = 0;
     public GameObject dayText;
     public GameObject sun;
     Vector3 rot;
-    float initialSunset;
+    public static float initialSunset;
     // Start is called before the first frame update
     void Start()
     {

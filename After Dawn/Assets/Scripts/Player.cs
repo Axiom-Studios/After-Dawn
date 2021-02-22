@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
 	Slider sprint;
 
 	//Movement variables
-	public float walkSpeed;
-	public float runSpeed;
+	public static float walkSpeed = 5f;
+	public static float runSpeed = 5f;
 	public float jumpForce;
 	float speed;
 	bool canRun = true;
@@ -29,12 +29,15 @@ public class Player : MonoBehaviour
 	float verticalRotation;
 	Rigidbody rb;
 
+	//Other Variables
 	public static bool gameWon = false;
 	public GameObject darkness;
 	public GameObject endText;
 	public GameObject startText;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
+	public static int beacons = 0;
+	public GameObject beaconPrefab;
 
 	private void Start()
 	{
@@ -98,6 +101,12 @@ public class Player : MonoBehaviour
 			endText.SetActive(false);
 		}
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
+		if (beacons > 0 && Input.GetButtonDown("Fire2"))
+		{
+			Instantiate(beaconPrefab, transform.position, transform.rotation);
+			beacons -= 1;
+		}
+
 	}
 	void FixedUpdate()
 	{
