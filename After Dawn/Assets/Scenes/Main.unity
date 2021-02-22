@@ -19613,6 +19613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa32d140fd565d741b471eb64331b631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayLength: 120
   minAmbientLight: 0.3
   dayText: {fileID: 1967182331}
   sun: {fileID: 705507993}

@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class TimeSphere : MonoBehaviour
 {
-    private float timeAdded;
-    // Start is called before the first frame update
-    void Start()
-    {
-        timeAdded = Random.Range(1, 5);
-    }
+    public float timeAdded;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")){

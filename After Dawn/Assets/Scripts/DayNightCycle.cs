@@ -6,16 +6,18 @@ public class DayNightCycle : MonoBehaviour
 {
     public static float sunset;
     public static bool night = false;
+    public float dayLength;
     public float minAmbientLight;
-    private Vector3 rot;
-    private float dayLength = 300;
     public static int day = 0;
     public GameObject dayText;
     public GameObject sun;
+    Vector3 rot;
+    float initialSunset;
     // Start is called before the first frame update
     void Start()
     {
         sunset = Time.time + dayLength;
+        initialSunset = sunset;
         rot = transform.rotation.eulerAngles;
     }
 
@@ -40,6 +42,7 @@ public class DayNightCycle : MonoBehaviour
         }
         */
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
+        sunset = Mathf.Clamp(sunset, 0f, initialSunset + Time.time);
         rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
 
         // make rot.z positive
