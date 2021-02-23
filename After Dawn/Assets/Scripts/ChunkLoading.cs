@@ -7,14 +7,14 @@ public class ChunkLoading : MonoBehaviour
 	public List<GameObject> chunks;
 	public float renderDistance;
 	public Transform player;
+	public new Transform camera;
+	
     void Update()
     {
-        foreach (GameObject chunk in chunks){
-			float chunkPos = chunk.transform.position.x - chunk.transform.position.y - chunk.transform.position.z;
-			float playerPos = player.position.x - player.position.y - player.position.z;
-			if (Mathf.Sqrt(chunkPos + playerPos) > renderDistance){
-				chunk.SetActive(false);
-			}
+        Ray ray = new Ray(player.position, camera.rotation.eulerAngles);
+		RaycastHit hit;
+		if (Physics.Raycast(ray, out hit, Mathf.Infinity)){
+			
 		}
     }
 }
