@@ -10,6 +10,7 @@ public class KeyManager : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            Player.hasKey = true;
             Destroy(gameObject);
         }
     }

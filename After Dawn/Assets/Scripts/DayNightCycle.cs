@@ -9,7 +9,8 @@ public class DayNightCycle : MonoBehaviour
     public static float dayLength = 120f;
     public float minAmbientLight;
     public static int day = 0;
-    public GameObject dayText;
+    public GameObject passText;
+    public GameObject failText;
     public GameObject sun;
     Vector3 rot;
     public static float initialSunset;
@@ -25,22 +26,33 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
         //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
-        /*if (Time.time >= sunset)
+        if (Time.time >= sunset)
         {
             night = true;
-            day += 1;
+            if (Player.passed)
+            {
+                day += 1;
+                dayLength -= 20f;
+                passText.SetActive(true);
+            }
+            else
+            {
+                dayLength += 20f;
+                failText.SetActive(true);
+            }
+            night = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            dayText.SetActive(true);
             Time.timeScale = 0f;
             PauseMenu.paused = true;
             sunset = Time.time + dayLength;
+            Player.passed = false;
         }
         if(!PauseMenu.paused){
-            dayText.SetActive(false);
+            passText.SetActive(false);
+            failText.SetActive(false);
             night = false;
         }
-        */
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
         sunset = Mathf.Clamp(sunset, 0f, initialSunset + Time.time);
         rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
