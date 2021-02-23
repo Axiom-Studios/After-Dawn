@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
 		//sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
+			hasKey = false;
 			sleeping = true;
 			darkness.SetActive(true);
 		}
