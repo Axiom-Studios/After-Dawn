@@ -9,6 +9,10 @@ public class StellarOrb : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Player.beacons += 1;
+            if (Player.stellarExplained == 0)
+            {
+                Player.stellarExplained = 1;
+            }
             Destroy(gameObject);
         }
     }

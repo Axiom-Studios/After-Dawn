@@ -6,6 +6,7 @@ using TMPro;
 public class BeaconCount : MonoBehaviour
 {
     TextMeshProUGUI beacons;
+    private float timeLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class BeaconCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        beacons.SetText("Beacons: " + Player.beacons);
+        timeLeft = Mathf.Round(DayNightCycle.sunset) - Mathf.Round(Time.time);
+        beacons.SetText("Time Remaining: " + timeLeft + "\nBeacons: " + Player.beacons);
     }
 }

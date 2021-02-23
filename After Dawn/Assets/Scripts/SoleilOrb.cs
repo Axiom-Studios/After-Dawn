@@ -10,6 +10,11 @@ public class SoleilOrb : MonoBehaviour
         {
             DayNightCycle.dayLength += 20f;
             DayNightCycle.sunset += 20f;
+            DayNightCycle.initialSunset += 20f;
+            if (Player.soleilExplained == 0)
+            {
+                Player.soleilExplained = 1;
+            }
             Destroy(gameObject);
         }
     }

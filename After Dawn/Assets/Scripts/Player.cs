@@ -39,6 +39,14 @@ public class Player : MonoBehaviour
 	public Vector3 spawn = new Vector3(126, 4, -140);
 	public static int beacons = 0;
 	public GameObject beaconPrefab;
+	public static int timeExplained = 0;
+	public static int soleilExplained = 0;
+	public static int lumineExplained = 0;
+	public static int stellarExplained = 0;
+	public GameObject timeText;
+	public GameObject soleilText;
+	public GameObject lumineText;
+	public GameObject stellarText;
 
 	private void Start()
 	{
@@ -56,6 +64,42 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+		if (timeExplained == 1)
+		{
+			timeText.SetActive(true);
+			timeExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		if (soleilExplained == 1)
+		{
+			soleilText.SetActive(true);
+			soleilExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		if (lumineExplained == 1)
+		{
+			lumineText.SetActive(true);
+			lumineExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		if (stellarExplained == 1)
+		{
+			stellarText.SetActive(true);
+			stellarExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
 		//sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
@@ -100,8 +144,6 @@ public class Player : MonoBehaviour
 		{
 			horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 			verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
-			startText.SetActive(false);
-			endText.SetActive(false);
 		}
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 		if (beacons > 0 && Input.GetButtonDown("Fire2"))

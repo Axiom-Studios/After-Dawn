@@ -107,3 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAdded: 15
+  timeText: {fileID: 3394294412158200203, guid: 2b896a768a636eb45ac2f757ab1306fc,
+    type: 3}

@@ -10,6 +10,10 @@ public class LumineOrb : MonoBehaviour
         {
             Player.walkSpeed += 0.5f;
             //Player.runSpeed += 0.5f;
+            if (Player.lumineExplained == 0)
+            {
+                Player.lumineExplained = 1;
+            }
             Destroy(gameObject);
         }
     }

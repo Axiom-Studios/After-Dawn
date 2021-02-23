@@ -49,8 +49,6 @@ public class DayNightCycle : MonoBehaviour
             Player.passed = false;
         }
         if(!PauseMenu.paused){
-            passText.SetActive(false);
-            failText.SetActive(false);
             night = false;
         }
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.

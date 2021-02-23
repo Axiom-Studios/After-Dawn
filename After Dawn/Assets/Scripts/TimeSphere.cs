@@ -10,6 +10,10 @@ public class TimeSphere : MonoBehaviour
         if (other.gameObject.CompareTag("Player")){
             //when coliding with player, add time to the day and destroy the sphere.
             DayNightCycle.sunset += timeAdded;
+            if (Player.timeExplained == 0)
+            {
+                Player.timeExplained = 1;
+            }
             Destroy(gameObject);
         }    
     }
