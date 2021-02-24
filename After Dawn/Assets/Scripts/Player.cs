@@ -8,40 +8,52 @@ public class Player : MonoBehaviour
 	Slider sprint;
 
 	//Movement variables
-	public float walkSpeed;
-	public float runSpeed;
-	public float jumpForce;
-	float speed;
-	bool canRun = true;
-	bool grounded = true;
+	public static float walkSpeed = 5f;
+	//public static float runSpeed = 5f;
+	//public float jumpForce;
+	float speed = 5f;
+	//bool canRun = true;
+	//bool grounded = true;
 	Vector3 keys;
 
-	public float staminaMax;
+	/*public float staminaMax;
 	public float staminaDrain;
 	public float staminaCharge;
-	float stamina;
+	float stamina;*/
 
 	//Camera variables
 	public Camera playerCamera;
-	
+	public static bool passed = false;
 	public float camSpeed;
 	float horizontalRotation;
 	float verticalRotation;
 	Rigidbody rb;
 
+	//Other Variables
+	public static bool hasKey = false;
 	public static bool gameWon = false;
 	public GameObject darkness;
 	public GameObject endText;
 	public GameObject startText;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
+	public static int beacons = 0;
+	public GameObject beaconPrefab;
+	public static int timeExplained = 0;
+	public static int soleilExplained = 0;
+	public static int lumineExplained = 0;
+	public static int stellarExplained = 0;
+	public GameObject timeText;
+	public GameObject soleilText;
+	public GameObject lumineText;
+	public GameObject stellarText;
 
 	private void Start()
 	{
-		sprint = slider.GetComponent<Slider>();
-		sprint.maxValue = staminaMax;
+		//sprint = slider.GetComponent<Slider>();
+		//sprint.maxValue = staminaMax;
 		rb = GetComponent<Rigidbody>();
-		stamina = staminaMax;
+		//stamina = staminaMax;
 		darkness.SetActive(false);
 		Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -52,9 +64,46 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
-		sprint.value = stamina;
+		if (timeExplained == 1)
+		{
+			timeText.SetActive(true);
+			timeExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		if (soleilExplained == 1)
+		{
+			soleilText.SetActive(true);
+			soleilExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		if (lumineExplained == 1)
+		{
+			lumineText.SetActive(true);
+			lumineExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		if (stellarExplained == 1)
+		{
+			stellarText.SetActive(true);
+			stellarExplained = 2;
+			Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            PauseMenu.paused = true;
+		}
+		//sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
+			hasKey = false;
 			sleeping = true;
 			darkness.SetActive(true);
 		}
@@ -68,7 +117,7 @@ public class Player : MonoBehaviour
 			darkness.SetActive(false);
 		}
 		//Running and Stamina
-		if (Input.GetButton("Run") && canRun == true)
+		/*if (Input.GetButton("Run") && canRun == true)
 		{
 			stamina -= staminaDrain * Time.deltaTime;
 			speed = runSpeed;
@@ -79,7 +128,7 @@ public class Player : MonoBehaviour
 			{
 				stamina += staminaCharge * Time.deltaTime;
 			}
-			speed = walkSpeed;
+			
 		}
 		if (stamina <= 0)
 		{
@@ -88,16 +137,21 @@ public class Player : MonoBehaviour
 		else if (stamina >= staminaMax)
 		{
 			canRun = true;
-		}
+		}*/
+		speed = walkSpeed;
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 		if (!(PauseMenu.paused))
 		{
 			horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 			verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
-			startText.SetActive(false);
-			endText.SetActive(false);
 		}
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
+		if (beacons > 0 && Input.GetButtonDown("Fire2"))
+		{
+			Instantiate(beaconPrefab, transform.position, transform.rotation);
+			beacons -= 1;
+		}
+
 	}
 	void FixedUpdate()
 	{
@@ -112,13 +166,13 @@ public class Player : MonoBehaviour
 		Vector3 velocity = direction * speed;
 		rb.velocity = transform.TransformDirection(velocity) + (Vector3.up * rb.velocity.y);
 		//Jumping
-		if (Input.GetButton("Jump") == true)
+		/*if (Input.GetButton("Jump") == true)
 		{
 			if (grounded)
 			{
 				rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
 			}
-		}
+		}*/
 	}
 
 	void CameraMovement(float horizontalRotation, float verticalRotation)
@@ -130,6 +184,7 @@ public class Player : MonoBehaviour
 		transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
 	}
 
+	/*
 	private void OnCollisionStay(Collision collision)
 	{
 		if (collision.gameObject.tag != "Wall")
@@ -149,14 +204,25 @@ public class Player : MonoBehaviour
 			grounded = false;
 		}
 	}
-
+	*/
 	public void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Camp") && !sleeping)
+		if (other.gameObject.CompareTag("Camp") && hasKey)
 		{
+			if (DayNightCycle.day == 3)
+			{
+				Cursor.lockState = CursorLockMode.None;
+            	Cursor.visible = true;
+				gameWon = true;
+            	endText.SetActive(true);
+            	Time.timeScale = 0f;
+            	PauseMenu.paused = true;	
+			}
+			passed = true;
 			DayNightCycle.sunset = Time.time;
+			hasKey = false;
 		}
-		if (other.gameObject.CompareTag("Key"))
+		/*if (other.gameObject.CompareTag("Key"))
 		{
 			Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -165,5 +231,6 @@ public class Player : MonoBehaviour
             Time.timeScale = 0f;
             PauseMenu.paused = true;
 		}
+		*/
 	}
 }

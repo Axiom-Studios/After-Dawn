@@ -8,6 +8,14 @@ public class PauseMenu : MonoBehaviour
     public static bool paused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject timeText;
+	public GameObject soleilText;
+	public GameObject lumineText;
+	public GameObject stellarText;
+    public GameObject endText;
+	public GameObject startText;
+    public GameObject passText;
+    public GameObject failText;
     // Update is called once per frame
     void Start()
     {
@@ -38,6 +46,14 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenuUI.SetActive(false);
+        startText.SetActive(false);
+		endText.SetActive(false);
+        passText.SetActive(false);
+        failText.SetActive(false);
+        timeText.SetActive(false);
+		soleilText.SetActive(false);
+        lumineText.SetActive(false);
+        stellarText.SetActive(false);
         Time.timeScale = 1f;
         paused = false;
     }
