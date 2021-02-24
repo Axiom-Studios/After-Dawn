@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 	//public float jumpForce;
 	float speed = 5f;
 	//bool canRun = true;
-	bool grounded = true;
+	//bool grounded = true;
 	Vector3 keys;
 
 	/*public float staminaMax;
@@ -184,6 +184,7 @@ public class Player : MonoBehaviour
 		transform.localRotation = Quaternion.Euler(0, horizontalRotation, 0);
 	}
 
+	/*
 	private void OnCollisionStay(Collision collision)
 	{
 		if (collision.gameObject.tag != "Wall")
@@ -203,7 +204,7 @@ public class Player : MonoBehaviour
 			grounded = false;
 		}
 	}
-
+	*/
 	public void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Camp") && hasKey)
