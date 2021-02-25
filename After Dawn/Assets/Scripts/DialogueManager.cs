@@ -6,14 +6,13 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueText;
     public GameObject dialogueBox;
-    List<string> sentencesQueue = new List<string>();
+    public static List<string> sentencesQueue = new List<string>();
     // Update is called once per frame
     void Update()
     {
-        if (sentencesQueue.Count == 0)
+        if (sentencesQueue.Count == 0 || PauseMenu.paused)
         {
             dialogueBox.SetActive(false);
         }

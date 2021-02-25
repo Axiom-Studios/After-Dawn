@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool paused = false;
+    public static float worldTime = 0f;
 
     public GameObject pauseMenuUI;
     public GameObject timeText;
@@ -39,6 +40,11 @@ public class PauseMenu : MonoBehaviour
         {
             Player.gameWon = false;
             SceneManager.LoadScene("Menu");
+        }
+
+        if (!paused)
+        {
+            worldTime += Time.deltaTime;
         }
     }
     public void Resume()
