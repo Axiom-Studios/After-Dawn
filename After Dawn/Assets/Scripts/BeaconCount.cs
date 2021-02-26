@@ -17,6 +17,6 @@ public class BeaconCount : MonoBehaviour
     void Update()
     {
         timeLeft = Mathf.Round(DayNightCycle.sunset) - Mathf.Round(Time.time);
-        beacons.SetText("Time Remaining: " + timeLeft + "\nBeacons: " + Player.beacons);
+        beacons.SetText("Time Left: " + timeLeft + "\nBeacons: " + Player.beacons);
     }
 }

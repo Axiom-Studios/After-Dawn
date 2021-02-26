@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public GameObject dialogueBox;
-    public float messageDuration = 5f;
+    public float messageDuration = 3f;
     public static List<string> sentencesQueue = new List<string>();
 
     // message explained bools
