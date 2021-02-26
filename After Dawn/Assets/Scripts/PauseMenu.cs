@@ -9,10 +9,6 @@ public class PauseMenu : MonoBehaviour
     public static float worldTime = 0f;
 
     public GameObject pauseMenuUI;
-    public GameObject timeText;
-	public GameObject soleilText;
-	public GameObject lumineText;
-	public GameObject stellarText;
     public GameObject endText;
 	public GameObject startText;
     public GameObject passText;
@@ -56,10 +52,6 @@ public class PauseMenu : MonoBehaviour
 		endText.SetActive(false);
         passText.SetActive(false);
         failText.SetActive(false);
-        timeText.SetActive(false);
-		soleilText.SetActive(false);
-        lumineText.SetActive(false);
-        stellarText.SetActive(false);
         Time.timeScale = 1f;
         paused = false;
     }

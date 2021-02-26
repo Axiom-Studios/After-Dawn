@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoleilOrb : MonoBehaviour
 {
+    public string explanationMessage = "These orange orbs seem to lengthen the day slightly.";
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -11,9 +12,10 @@ public class SoleilOrb : MonoBehaviour
             DayNightCycle.dayLength += 20f;
             DayNightCycle.sunset += 20f;
             DayNightCycle.initialSunset += 20f;
-            if (Player.soleilExplained == 0)
+            if (!DialogueManager.soleilExplained)
             {
-                Player.soleilExplained = 1;
+                DialogueManager.sentencesQueue.Add(explanationMessage);
+                DialogueManager.soleilExplained = true;
             }
             Destroy(gameObject);
         }
