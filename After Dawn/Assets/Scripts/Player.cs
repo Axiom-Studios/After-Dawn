@@ -34,11 +34,12 @@ public class Player : MonoBehaviour
 	public static bool gameWon = false;
 	public GameObject darkness;
 	public GameObject endText;
-	public GameObject startText;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
 	public static int beacons = 0;
 	public GameObject beaconPrefab;
+	bool mouseLearned = false;
+	bool wasdLearned = false;
 
 	private void Start()
 	{
@@ -47,15 +48,31 @@ public class Player : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		//stamina = staminaMax;
 		darkness.SetActive(false);
-		Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        startText.SetActive(true);
-        Time.timeScale = 0f;
-        PauseMenu.paused = true;
 	}
 
 	void Update()
 	{
+		// movement tutorial dialogue
+		if (horizontalRotation != 0f || verticalRotation != 0f)
+		{
+			mouseLearned = true;
+		}
+		if (PauseMenu.worldTime >= 10 && !mouseLearned)
+		{
+			DialogueManager.sentencesQueue.Add("Use mouse to look around.");
+			mouseLearned = true;
+		}
+
+		if (keys != Vector3.zero)
+		{
+			wasdLearned = true;
+		}
+		if (PauseMenu.worldTime >= 20 && !wasdLearned)
+		{
+			DialogueManager.sentencesQueue.Add("Use WASD to move.");
+			wasdLearned = true;
+		}
+
 		//sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
@@ -107,7 +124,6 @@ public class Player : MonoBehaviour
 			Instantiate(beaconPrefab, transform.position, transform.rotation);
 			beacons -= 1;
 		}
-
 	}
 	void FixedUpdate()
 	{

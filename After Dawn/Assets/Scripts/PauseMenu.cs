@@ -10,7 +10,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject endText;
-	public GameObject startText;
     public GameObject passText;
     public GameObject failText;
     // Update is called once per frame
@@ -21,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
+        worldTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (paused)
@@ -37,18 +37,12 @@ public class PauseMenu : MonoBehaviour
             Player.gameWon = false;
             SceneManager.LoadScene("Menu");
         }
-
-        if (!paused)
-        {
-            worldTime += Time.deltaTime;
-        }
     }
     public void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenuUI.SetActive(false);
-        startText.SetActive(false);
 		endText.SetActive(false);
         passText.SetActive(false);
         failText.SetActive(false);
