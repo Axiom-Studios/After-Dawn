@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95d03deb4509244a911d31de50d24b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stellarText: {fileID: 1594671635445065244, guid: be84f3e3c50872f49be8b919917c0304,
-    type: 3}
+  explanationMessage: These purple orbs seem to allow me to place a beacon visible
+    from most of the maze.

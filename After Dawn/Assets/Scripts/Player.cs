@@ -34,19 +34,12 @@ public class Player : MonoBehaviour
 	public static bool gameWon = false;
 	public GameObject darkness;
 	public GameObject endText;
-	public GameObject startText;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
 	public static int beacons = 0;
 	public GameObject beaconPrefab;
-	public static int timeExplained = 0;
-	public static int soleilExplained = 0;
-	public static int lumineExplained = 0;
-	public static int stellarExplained = 0;
-	public GameObject timeText;
-	public GameObject soleilText;
-	public GameObject lumineText;
-	public GameObject stellarText;
+	bool mouseLearned = false;
+	bool wasdLearned = false;
 
 	private void Start()
 	{
@@ -55,51 +48,31 @@ public class Player : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		//stamina = staminaMax;
 		darkness.SetActive(false);
-		Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        startText.SetActive(true);
-        Time.timeScale = 0f;
-        PauseMenu.paused = true;
 	}
 
 	void Update()
 	{
-		if (timeExplained == 1)
+		// movement tutorial dialogue
+		if (horizontalRotation != 0f || verticalRotation != 0f)
 		{
-			timeText.SetActive(true);
-			timeExplained = 2;
-			Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0f;
-            PauseMenu.paused = true;
+			mouseLearned = true;
 		}
-		if (soleilExplained == 1)
+		if (Time.time >= 10 && !mouseLearned)
 		{
-			soleilText.SetActive(true);
-			soleilExplained = 2;
-			Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0f;
-            PauseMenu.paused = true;
+			DialogueManager.sentencesQueue.Add("Use mouse to look around.");
+			mouseLearned = true;
 		}
-		if (lumineExplained == 1)
+
+		if (keys != Vector3.zero)
 		{
-			lumineText.SetActive(true);
-			lumineExplained = 2;
-			Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0f;
-            PauseMenu.paused = true;
+			wasdLearned = true;
 		}
-		if (stellarExplained == 1)
+		if (Time.time >= 20 && !wasdLearned)
 		{
-			stellarText.SetActive(true);
-			stellarExplained = 2;
-			Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0f;
-            PauseMenu.paused = true;
+			DialogueManager.sentencesQueue.Add("Use WASD to move.");
+			wasdLearned = true;
 		}
+
 		//sprint.value = stamina;
 		if (DayNightCycle.night)
 		{
@@ -151,7 +124,6 @@ public class Player : MonoBehaviour
 			Instantiate(beaconPrefab, transform.position, transform.rotation);
 			beacons -= 1;
 		}
-
 	}
 	void FixedUpdate()
 	{
