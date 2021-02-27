@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
 		{
 			mouseLearned = true;
 		}
-		if (PauseMenu.worldTime >= 10 && !mouseLearned)
+		if (Time.time >= 10 && !mouseLearned)
 		{
 			DialogueManager.sentencesQueue.Add("Use mouse to look around.");
 			mouseLearned = true;
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
 		{
 			wasdLearned = true;
 		}
-		if (PauseMenu.worldTime >= 20 && !wasdLearned)
+		if (Time.time >= 20 && !wasdLearned)
 		{
 			DialogueManager.sentencesQueue.Add("Use WASD to move.");
 			wasdLearned = true;

@@ -31,9 +31,9 @@ public class DialogueManager : MonoBehaviour
             if (dialogueText.text != sentencesQueue[0])
             {
                 dialogueText.text = sentencesQueue[0];
-                t1 = PauseMenu.worldTime;
+                t1 = Time.time;
             }
-            if (PauseMenu.worldTime - t1 > messageDuration)
+            if (Time.time - t1 > messageDuration)
             {
                 sentencesQueue.RemoveAt(0);
             }

@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool paused = false;
-    public static float worldTime = 0f;
-
     public GameObject pauseMenuUI;
     public GameObject endText;
     public GameObject passText;
@@ -20,7 +18,6 @@ public class PauseMenu : MonoBehaviour
     }
     void Update()
     {
-        worldTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (paused)
