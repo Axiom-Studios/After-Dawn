@@ -5,7 +5,6 @@ using UnityEngine;
 public class TimeSphere : MonoBehaviour
 {
     public float timeAdded;
-    public string explanationMessage = "These white orbs seem to push back time slightly.";
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")){
@@ -13,7 +12,7 @@ public class TimeSphere : MonoBehaviour
             DayNightCycle.sunset += timeAdded;
             if (!DialogueManager.timeExplained)
             {
-                DialogueManager.sentencesQueue.Add(explanationMessage);
+                DialogueManager.sentencesQueue.Add("White orbs push back the island\'s time a bit");
                 DialogueManager.timeExplained = true;
             }
             Destroy(gameObject);

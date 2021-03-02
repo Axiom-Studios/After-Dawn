@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StellarOrb : MonoBehaviour
 {
-    public string explanationMessage = "These purple orbs seem to allow me to place a beacon visible from most of the maze.";
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -12,7 +11,8 @@ public class StellarOrb : MonoBehaviour
             Player.beacons += 1;
             if (!DialogueManager.stellarExplained)
             {
-                DialogueManager.sentencesQueue.Add(explanationMessage);
+                DialogueManager.sentencesQueue.Add("Purple orbs seem to allow me to place a beacon");
+                DialogueManager.sentencesQueue.Add("Right click to place on in your current location");
                 DialogueManager.stellarExplained = true;
             }
             Destroy(gameObject);

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public Image Canvas;
     public TextMeshProUGUI dialogueText;
     public GameObject dialogueBox;
     public float messageDuration = 3f;
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             dialogueBox.SetActive(true);
+            Canvas.color = new Color(0, 0, 0, 0.3f);
             if (dialogueText.text != sentencesQueue[0])
             {
                 dialogueText.text = sentencesQueue[0];
@@ -36,6 +38,10 @@ public class DialogueManager : MonoBehaviour
             if (Time.time - t1 > messageDuration)
             {
                 sentencesQueue.RemoveAt(0);
+                if (sentencesQueue.Count == 0)
+                {
+                    Canvas.color = new Color(0, 0, 0, 0);
+                }
             }
         }
     }
