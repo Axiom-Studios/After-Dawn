@@ -13,11 +13,14 @@ public class DayNightCycle : MonoBehaviour
     public GameObject failText;
     public GameObject sun;
     Vector3 rot;
+    public static float shadowTime = 0f;
+    // NOTICE: day time is controlled by shadowTime NOT Time.time
     public static float initialSunset;
     // Start is called before the first frame update
     void Start()
     {
-        sunset = Time.time + dayLength;
+        shadowTime = Time.time;
+        sunset = shadowTime + dayLength;
         initialSunset = sunset;
         rot = transform.rotation.eulerAngles;
     }
@@ -25,8 +28,12 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Player.safeZoned)
+        {
+            shadowTime += Time.deltaTime;
+        }
         //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
-        if (Time.time >= sunset)
+        if (shadowTime >= sunset)
         {
             night = true;
             if (Player.passed)
@@ -45,15 +52,18 @@ public class DayNightCycle : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0f;
             PauseMenu.paused = true;
-            sunset = Time.time + dayLength;
+            sunset = shadowTime + dayLength;
             Player.passed = false;
         }
         if(!PauseMenu.paused){
             night = false;
         }
+
+        float preRotZ = rot.z;
+
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
-        sunset = Mathf.Clamp(sunset, 0f, initialSunset + Time.time);
-        rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
+        sunset = Mathf.Clamp(sunset, 0f, initialSunset + shadowTime);
+        rot.z = (((sunset - shadowTime) / dayLength) * 180) - 190;
 
         // make rot.z positive
         rot.z = rot.z % 360;
@@ -63,6 +73,8 @@ public class DayNightCycle : MonoBehaviour
         }
 
         Light sunLight = sun.GetComponent<Light>();
+
+        transform.rotation = Quaternion.Euler(rot);
 
         // calculate light intensity - if statement for night time
         if (0f <= rot.z && rot.z <= 180f)
@@ -75,9 +87,6 @@ public class DayNightCycle : MonoBehaviour
             sunLight.intensity = (90f - Mathf.Abs(rot.z - 270)) / 90;
             RenderSettings.ambientIntensity = (90f - Mathf.Abs(rot.z - 270)) / 90 * (1 - minAmbientLight) + minAmbientLight;
         }
-
-
-        transform.rotation = Quaternion.Euler(rot);
     }
     void AddTime(float timeAdded)
     {

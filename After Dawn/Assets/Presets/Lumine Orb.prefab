@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fa47ea16fa2f34192a770843916ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lumineText: {fileID: 4697886117609413245, guid: c47a6bd83bf13d448a946c0d9f9f528a,
-    type: 3}
+  explanationMessage: These blue orbs speed up time around me, making me slightly
+    faster.

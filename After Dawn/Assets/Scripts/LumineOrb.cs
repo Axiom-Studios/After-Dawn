@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LumineOrb : MonoBehaviour
 {
-    public string explanationMessage = "These blue orbs seem to speed time around me, making me slightly faster.";
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -13,7 +12,7 @@ public class LumineOrb : MonoBehaviour
             //Player.runSpeed += 0.5f;
             if (!DialogueManager.lumineExplained)
             {
-                DialogueManager.sentencesQueue.Add(explanationMessage);
+                DialogueManager.sentencesQueue.Add("Blue orbs make you faster");
                 DialogueManager.lumineExplained = true;
             }
             Destroy(gameObject);
