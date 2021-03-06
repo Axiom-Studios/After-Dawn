@@ -127,10 +127,8 @@ public class Player : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		if (!CutsceneControl.active){
-			CameraMovement(horizontalRotation, verticalRotation);
-			PlayerMovement(keys);
-		}
+		CameraMovement(horizontalRotation, verticalRotation);
+		PlayerMovement(keys);
 	}
 
 	void PlayerMovement(Vector3 input)
