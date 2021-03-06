@@ -6,6 +6,12 @@ public class SkyOrb : MonoBehaviour
 {
     public Camera playerCamera;
     public Camera skyCamera;
+    public static bool skyActive = false;
+    void Start()
+    {
+        playerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        skyCamera = GameObject.Find("Sky Camera").GetComponent<Camera>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -16,6 +22,7 @@ public class SkyOrb : MonoBehaviour
                 DialogueManager.skyExplained = true;
             }
 
+            skyActive = true;
             StartCoroutine(switchForFive());
         }
     }
@@ -29,6 +36,7 @@ public class SkyOrb : MonoBehaviour
 
         skyCamera.enabled = false;
         playerCamera.enabled = true;
+        skyActive = false;
         Destroy(gameObject);
     }
 }
