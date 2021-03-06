@@ -12,6 +12,7 @@ public class LumineOrb : MonoBehaviour
             //Player.runSpeed += 0.5f;
             if (!DialogueManager.lumineExplained)
             {
+                DialogueManager.sentencesQueue.Clear();
                 DialogueManager.sentencesQueue.Add("Blue orbs make you faster");
                 DialogueManager.lumineExplained = true;
             }

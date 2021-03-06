@@ -18,6 +18,7 @@ public class SkyOrb : MonoBehaviour
         {
             if (!DialogueManager.skyExplained)
             {
+                DialogueManager.sentencesQueue.Clear();
                 DialogueManager.sentencesQueue.Add("Sky orbs allow you to see from the sky for 5 seconds");
                 DialogueManager.skyExplained = true;
             }

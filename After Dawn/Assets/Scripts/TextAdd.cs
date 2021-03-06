@@ -9,6 +9,7 @@ public class TextAdd : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            DialogueManager.sentencesQueue.Clear();
             DialogueManager.sentencesQueue.Add(text);
             Destroy(gameObject);
         }
