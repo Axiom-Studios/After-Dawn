@@ -7,6 +7,7 @@ public class SkyOrb : MonoBehaviour
     public Camera playerCamera;
     public Camera skyCamera;
     public static bool skyActive = false;
+    float lookTime = 7f;
     void Start()
     {
         playerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -19,21 +20,21 @@ public class SkyOrb : MonoBehaviour
             if (!DialogueManager.skyExplained)
             {
                 DialogueManager.sentencesQueue.Clear();
-                DialogueManager.sentencesQueue.Add("Sky orbs allow you to see from the sky for 5 seconds");
+                DialogueManager.sentencesQueue.Add("Sky orbs allow you to see from the sky for 7 seconds");
                 DialogueManager.skyExplained = true;
             }
 
             skyActive = true;
-            StartCoroutine(switchForFive());
+            StartCoroutine(switchForX());
         }
     }
 
-    IEnumerator switchForFive()
+    IEnumerator switchForX()
     {
         playerCamera.enabled = false;
         skyCamera.enabled = true;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(lookTime);
 
         skyCamera.enabled = false;
         playerCamera.enabled = true;

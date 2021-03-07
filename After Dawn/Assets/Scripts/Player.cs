@@ -128,7 +128,14 @@ public class Player : MonoBehaviour
 	void FixedUpdate()
 	{
 		CameraMovement(horizontalRotation, verticalRotation);
-		if (!SkyOrb.skyActive) {PlayerMovement(keys);}
+		if (SkyOrb.skyActive) 
+		{
+			rb.velocity = Vector3.zero;
+		}
+		else
+		{
+			PlayerMovement(keys);
+		}
 	}
 
 	void PlayerMovement(Vector3 input)
