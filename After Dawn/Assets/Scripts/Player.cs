@@ -127,8 +127,16 @@ public class Player : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		CameraMovement(horizontalRotation, verticalRotation);
-		PlayerMovement(keys);
+		if (SkyOrb.skyActive) 
+		{
+			rb.velocity = Vector3.zero;
+			transform.localRotation = Quaternion.Euler(0, 0, 0);
+		}
+		else
+		{
+			PlayerMovement(keys);
+			CameraMovement(horizontalRotation, verticalRotation);
+		}
 	}
 
 	void PlayerMovement(Vector3 input)

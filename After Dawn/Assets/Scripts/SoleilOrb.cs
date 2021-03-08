@@ -13,6 +13,7 @@ public class SoleilOrb : MonoBehaviour
             DayNightCycle.initialSunset += 20f;
             if (!DialogueManager.soleilExplained)
             {
+                DialogueManager.sentencesQueue.Clear();
                 DialogueManager.sentencesQueue.Add("Orange orbs make the day a bit longer");
                 DialogueManager.soleilExplained = true;
             }

@@ -12,6 +12,7 @@ public class TimeSphere : MonoBehaviour
             DayNightCycle.sunset += timeAdded;
             if (!DialogueManager.timeExplained)
             {
+                DialogueManager.sentencesQueue.Clear();
                 DialogueManager.sentencesQueue.Add("White orbs push back the island\'s time a bit");
                 DialogueManager.timeExplained = true;
             }

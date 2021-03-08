@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     public static bool stellarExplained = false;
     public static bool soleilExplained = false;
     public static bool lumineExplained = false;
+    public static bool skyExplained = false;
     float t1 = 0;
 
     // Update is called once per frame
