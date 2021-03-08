@@ -106,6 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89213f647c541a842afab82e0c86c7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAdded: 15
-  timeText: {fileID: 3394294412158200203, guid: 2b896a768a636eb45ac2f757ab1306fc,
-    type: 3}
+  timeAdded: 10

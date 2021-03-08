@@ -8,7 +8,7 @@ public class LumineOrb : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Player.walkSpeed += 0.5f;
+            Player.walkSpeed += 0.75f;
             //Player.runSpeed += 0.5f;
             if (!DialogueManager.lumineExplained)
             {
