@@ -53,10 +53,10 @@ public class DayNightCycle : MonoBehaviour
             Time.timeScale = 0f;
             PauseMenu.paused = true;
             sunset = shadowTime + dayLength;
-            Player.passed = false;
         }
         if(!PauseMenu.paused){
             night = false;
+            Player.passed = false;
         }
 
         float preRotZ = rot.z;
