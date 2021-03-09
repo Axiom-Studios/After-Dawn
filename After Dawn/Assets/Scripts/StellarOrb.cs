@@ -8,6 +8,7 @@ public class StellarOrb : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            DialogueManager.orbs += 1;
             Player.beacons += 1;
             if (!DialogueManager.stellarExplained)
             {

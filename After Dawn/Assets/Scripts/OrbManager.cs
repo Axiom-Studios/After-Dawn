@@ -10,7 +10,7 @@ public class OrbManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(orbs > 8 && !(secretTriggered))
+        if(orbs > 51 && !(secretTriggered))
         {
             SecretText();
         }
