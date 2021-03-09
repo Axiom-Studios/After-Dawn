@@ -9,6 +9,6 @@ public class CompassRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = new Vector3(70f, 0, playerTransform.eulerAngles.y);
+        transform.eulerAngles = new Vector3(65f, 0, playerTransform.eulerAngles.y);
     }
 }
