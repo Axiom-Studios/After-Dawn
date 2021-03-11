@@ -5802,10 +5802,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You insert the key into the statue and feel something change. As you head
+  m_text: 'You insert the key into the statue and feel something change. As you head
     back to the shore, you find a boat waiting and quickly start sailing away from
     the island. You made it out alive, but you still feel like you left something
     unfinished...
+
+    Press Tab to Exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -6393,8 +6395,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You collapse and wake up at your camp, your pockets empty. Mother Time
+  m_text: 'You collapse and wake up at your camp, your pockets empty. Mother Time
     grows more complacent...
+
+    Press Tab to Exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -13085,7 +13089,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You collected every orb! Return them to the statue to return order to time!
+  m_text: 'You insert the keys into the statues as well as the various orbs you had
+    collected. The feeling of unease youd felt during your adventure starts to fade
+    and you feel a sense of peace wash over the island. You restored balance to time!
+
+    Press
+    Tab to Exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -13178,7 +13187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 99}
   m_SizeDelta: {x: 852, y: 412}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &847723075
@@ -30716,7 +30725,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mother Time grows angrier and the maze changes overnight...
+  m_text: 'Mother Time grows angrier and the maze changes overnight...
+
+    Press
+    Tab to Exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
