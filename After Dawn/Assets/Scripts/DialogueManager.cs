@@ -12,6 +12,8 @@ public class DialogueManager : MonoBehaviour
     public float messageDuration = 3f;
     public static List<string> sentencesQueue = new List<string>();
 
+    public static int orbs;
+
     // message explained bools
     public static bool timeExplained = false;
     public static bool stellarExplained = false;

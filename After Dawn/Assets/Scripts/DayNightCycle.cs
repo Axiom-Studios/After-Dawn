@@ -12,6 +12,7 @@ public class DayNightCycle : MonoBehaviour
     public GameObject passText;
     public GameObject failText;
     public GameObject sun;
+    public GameObject tutBarrier;
     Vector3 rot;
     public static float shadowTime = 0f;
     // NOTICE: day time is controlled by shadowTime NOT Time.time
@@ -53,10 +54,14 @@ public class DayNightCycle : MonoBehaviour
             Time.timeScale = 0f;
             PauseMenu.paused = true;
             sunset = shadowTime + dayLength;
-            Player.passed = false;
+            if (day > 0)
+            {
+                tutBarrier.SetActive(true);
+            }
         }
         if(!PauseMenu.paused){
             night = false;
+            Player.passed = false;
         }
 
         float preRotZ = rot.z;

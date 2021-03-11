@@ -8,6 +8,7 @@ public class SoleilOrb : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            DialogueManager.orbs += 1;
             DayNightCycle.dayLength += 20f;
             DayNightCycle.sunset += 20f;
             DayNightCycle.initialSunset += 20f;

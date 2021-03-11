@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 	public static bool gameWon = false;
 	public GameObject darkness;
 	public GameObject endText;
+	public GameObject secretEnding;
 	private bool sleeping = false;
 	public Vector3 spawn = new Vector3(126, 4, -140);
 	public static int beacons = 0;
@@ -194,7 +195,14 @@ public class Player : MonoBehaviour
 				Cursor.lockState = CursorLockMode.None;
             	Cursor.visible = true;
 				gameWon = true;
-            	endText.SetActive(true);
+				if (DialogueManager.orbs == 51)
+				{
+					secretEnding.SetActive(true);
+				}
+            	else
+				{
+					endText.SetActive(true);
+				}
             	Time.timeScale = 0f;
             	PauseMenu.paused = true;	
 			}
