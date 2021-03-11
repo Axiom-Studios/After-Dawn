@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 	float speed = 5f;
 	//bool canRun = true;
 	//bool grounded = true;
-	Vector3 keys;
+	public static Vector3 keys;
 
 	/*public float staminaMax;
 	public float staminaDrain;

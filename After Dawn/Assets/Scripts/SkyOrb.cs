@@ -8,15 +8,18 @@ public class SkyOrb : MonoBehaviour
     public Camera skyCamera;
     public static bool skyActive = false;
     float lookTime = 7f;
+	AudioSource source;
     void Start()
     {
         playerCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         skyCamera = GameObject.Find("Sky Camera").GetComponent<Camera>();
+		source = gameObject.GetComponent<AudioSource>();
     }
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+			source.Play();
             if (!DialogueManager.skyExplained)
             {
                 DialogueManager.sentencesQueue.Clear();
