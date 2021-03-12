@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class TimeSphere : MonoBehaviour
 {
+
+    public bool collected = false;
 	AudioSource source;
 	void Start(){
 		source = gameObject.GetComponent<AudioSource>();
 	}
+
+    void Update()
+    {
+        if (DayNightCycle.night && collected)
+        {
+            if (Player.passed)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                transform.Translate(0, 100, 0);
+                collected = false;
+            }
+        }
+    }
+
     public float timeAdded;
     void OnTriggerEnter(Collider other)
     {
@@ -28,6 +47,7 @@ public class TimeSphere : MonoBehaviour
 		source.Play();
 		gameObject.GetComponent<MeshRenderer>().enabled = false;
 		yield return new WaitForSeconds(.5f);
-		Destroy(gameObject);
+		transform.Translate(0, -100, 0);
+        collected = true;
 	}
 }

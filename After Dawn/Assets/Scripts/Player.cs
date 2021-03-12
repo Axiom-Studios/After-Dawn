@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 	public GameObject endText;
 	public GameObject secretEnding;
 	private bool sleeping = false;
-	public Vector3 spawn = new Vector3(126, 4, -140);
+	public Vector3 spawn = new Vector3(20, 10, -30);
 	public static int beacons = 0;
 	public GameObject beaconPrefab;
 	bool mouseLearned = false;
