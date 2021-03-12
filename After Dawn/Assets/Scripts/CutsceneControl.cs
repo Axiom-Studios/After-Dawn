@@ -24,6 +24,7 @@ public class CutsceneControl : MonoBehaviour
 
 	public static void Initialize(List<Texture> textureList, int cutsceneLength){
 		Time.timeScale = 0f;
+		imageNum = 0;
 		active = true;
 		textures = textureList;
 		length = cutsceneLength;
