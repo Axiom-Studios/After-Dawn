@@ -16,7 +16,7 @@ public class BeaconCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft = Mathf.Round(DayNightCycle.sunset) - Mathf.Round(DayNightCycle.shadowTime);
+        timeLeft = Mathf.Round(DayNightCycle.sunset) - Mathf.Round(Time.time);
         beacons.SetText("Time Left: " + timeLeft + "\nBeacons: " + Player.beacons);
     }
 }
