@@ -18,6 +18,7 @@ public class SoundControl : MonoBehaviour
 	float creepyRate;
 	float lastSound;
 
+	public Camera mainCamera;
 	void Start(){
 		creepyRate = Random.Range(minRate, maxRate);
 	}
@@ -25,7 +26,7 @@ public class SoundControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.keys != Vector3.zero){
+        if (Player.keys != Vector3.zero && mainCamera.enabled){
 			if ((Time.time - lastStep) >= rate){
 				stepSource.clip = footsteps[Random.Range(0, footsteps.Count - 1)];
 				stepSource.Play();
