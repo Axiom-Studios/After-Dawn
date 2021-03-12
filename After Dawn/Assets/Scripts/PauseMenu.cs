@@ -37,6 +37,20 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
+        if (passText.activeSelf == true)
+        {
+            if (!DialogueManager.morningExplained)
+            {
+                DialogueManager.sentencesQueue.Clear();
+                DialogueManager.sentencesQueue.Add("It's a new day!");
+                DialogueManager.sentencesQueue.Add("Some barriers have shifted around");
+                DialogueManager.sentencesQueue.Add("You must find a key hidden deep within the map and return to camp");
+                DialogueManager.morningExplained = true;
+            }
+            DayNightCycle.shadowTime = 0;
+            DayNightCycle.sunset = DayNightCycle.shadowTime + DayNightCycle.dayLength;
+            DayNightCycle.initialSunset = DayNightCycle.sunset;
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenuUI.SetActive(false);

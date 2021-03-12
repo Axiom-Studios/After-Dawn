@@ -24,6 +24,14 @@ public class KeyManager : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            if (!DialogueManager.keyExplained)
+            {
+                DialogueManager.sentencesQueue.Clear();
+                DialogueManager.sentencesQueue.Add("Keys must be collected every day");
+                DialogueManager.sentencesQueue.Add("They are often placed in random locations throughout the map");
+                DialogueManager.sentencesQueue.Add("They are required to enter camp and complete the day");
+                DialogueManager.keyExplained = true;
+            }
             Player.hasKey = true;
             transform.Translate(0, -100, 0);
             collected = true;
