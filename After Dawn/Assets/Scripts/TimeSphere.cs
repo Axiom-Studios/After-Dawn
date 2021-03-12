@@ -32,7 +32,10 @@ public class TimeSphere : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")){
 			source.Play();
+            transform.Translate(0, -100, 0);
+            collected = true;
 			StartCoroutine(PlaySound(source));
+            
             //when coliding with player, add time to the day and destroy the sphere.
             DayNightCycle.sunset += timeAdded;
             if (!DialogueManager.timeExplained)
@@ -45,9 +48,7 @@ public class TimeSphere : MonoBehaviour
     }
 	IEnumerator PlaySound(AudioSource source){
 		source.Play();
-		gameObject.GetComponent<MeshRenderer>().enabled = false;
 		yield return new WaitForSeconds(.5f);
-		transform.Translate(0, -100, 0);
-        collected = true;
+		
 	}
 }

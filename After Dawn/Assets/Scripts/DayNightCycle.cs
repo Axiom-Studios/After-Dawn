@@ -20,6 +20,8 @@ public class DayNightCycle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        day = 0;
+        dayLength = 120f;
         shadowTime = Time.time;
         sunset = shadowTime + dayLength;
         initialSunset = sunset;

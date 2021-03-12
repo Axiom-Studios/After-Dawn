@@ -32,11 +32,14 @@ public class SoleilOrb : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             DialogueManager.orbs += 1;
-			source.Play();
-			StartCoroutine(PlaySound(source));
             DayNightCycle.dayLength += 20f;
             DayNightCycle.sunset += 20f;
             DayNightCycle.initialSunset += 20f;
+            transform.Translate(0, -100, 0);
+            collected = true;
+			source.Play();
+			StartCoroutine(PlaySound(source));
+            
             if (!DialogueManager.soleilExplained)
             {
                 DialogueManager.sentencesQueue.Clear();
@@ -47,9 +50,7 @@ public class SoleilOrb : MonoBehaviour
     }
 	IEnumerator PlaySound(AudioSource source){
 		source.Play();
-		gameObject.GetComponent<MeshRenderer>().enabled = false;
 		yield return new WaitForSeconds(.5f);
-		transform.Translate(0, -100, 0);
-        collected = true;
+		
 	}
 }

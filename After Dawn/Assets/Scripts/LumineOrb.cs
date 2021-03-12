@@ -32,6 +32,8 @@ public class LumineOrb : MonoBehaviour
         {
             DialogueManager.orbs += 1;
             Player.walkSpeed += 0.5f;
+            transform.Translate(0, -100, 0);
+            collected = true;
 			source.Play();
 			StartCoroutine(PlaySound(source));
             //Player.runSpeed += 0.5f;
@@ -45,8 +47,6 @@ public class LumineOrb : MonoBehaviour
     }
 	IEnumerator PlaySound(AudioSource source){
 		source.Play();
-		gameObject.GetComponent<MeshRenderer>().enabled = false;
 		yield return new WaitForSeconds(.5f);
-		Destroy(gameObject);
 	}
 }

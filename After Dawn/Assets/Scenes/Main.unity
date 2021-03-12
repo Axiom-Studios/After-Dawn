@@ -14398,7 +14398,7 @@ MonoBehaviour:
   darkness: {fileID: 1672068174}
   endText: {fileID: 455579549}
   secretEnding: {fileID: 0}
-  spawn: {x: 6, y: 11, z: -50}
+  spawn: {x: 20, y: 10, z: -30}
   beaconPrefab: {fileID: 1364142108887431286, guid: 606624b365cfa7843a35d57e62ef9374,
     type: 3}
 --- !u!136 &914255792
@@ -33354,3 +33354,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95d03deb4509244a911d31de50d24b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collected: 0

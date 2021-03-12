@@ -45,6 +45,11 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+		walkSpeed = 5f;
+		speed = 5f;
+		beacons = 0;
+		hasKey = false;
+		gameWon = false;
 		//sprint = slider.GetComponent<Slider>();
 		//sprint.maxValue = staminaMax;
 		rb = GetComponent<Rigidbody>();

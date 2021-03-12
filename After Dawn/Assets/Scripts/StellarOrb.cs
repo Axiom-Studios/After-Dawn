@@ -34,7 +34,10 @@ public class StellarOrb : MonoBehaviour
             DialogueManager.orbs += 1;
             Player.beacons += 1;
 			source.Play();
+            transform.Translate(0, -100, 0);
+            collected = true;
 			StartCoroutine(PlaySound(source));
+            
             if (!DialogueManager.stellarExplained)
             {
                 DialogueManager.sentencesQueue.Clear();
@@ -48,9 +51,7 @@ public class StellarOrb : MonoBehaviour
 
 	IEnumerator PlaySound(AudioSource source){
 		source.Play();
-		gameObject.GetComponent<MeshRenderer>().enabled = false;
 		yield return new WaitForSeconds(.5f);
-		transform.Translate(0, -100, 0);
-        collected = true;
+		
 	}
 }
