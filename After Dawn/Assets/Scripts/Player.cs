@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 	public Vector3 spawn = new Vector3(20, 10, -30);
 	public static int beacons = 0;
 	public GameObject beaconPrefab;
+	float bootTime = 0f;
 	bool mouseLearned = false;
 	bool wasdLearned = false;
 
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		//stamina = staminaMax;
 		darkness.SetActive(false);
+		bootTime = Time.time;
 	}
 
 	void Update()
@@ -63,7 +65,7 @@ public class Player : MonoBehaviour
 		{
 			mouseLearned = true;
 		}
-		if (Time.time >= 10 && !mouseLearned)
+		if (Time.time - bootTime >= 10 && !mouseLearned)
 		{
 			DialogueManager.sentencesQueue.Add("Use mouse to look around.");
 			mouseLearned = true;
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
 		{
 			wasdLearned = true;
 		}
-		if (Time.time >= 20 && !wasdLearned)
+		if (Time.time - bootTime >= 20 && !wasdLearned)
 		{
 			DialogueManager.sentencesQueue.Add("Use WASD to move.");
 			wasdLearned = true;
