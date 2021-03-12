@@ -47,9 +47,8 @@ public class PauseMenu : MonoBehaviour
                 DialogueManager.sentencesQueue.Add("You must find a key hidden deep within the map and return to camp");
                 DialogueManager.morningExplained = true;
             }
-            DayNightCycle.shadowTime = 0;
-            DayNightCycle.sunset = DayNightCycle.shadowTime + DayNightCycle.dayLength;
-            DayNightCycle.initialSunset = DayNightCycle.sunset;
+            DayNightCycle.initialSunset = Time.time + DayNightCycle.dayLength;
+            DayNightCycle.sunset = DayNightCycle.initialSunset;
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

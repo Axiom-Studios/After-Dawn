@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
 	public GameObject beaconPrefab;
 	bool mouseLearned = false;
 	bool wasdLearned = false;
-	public static bool safeZoned = false;
 
 	private void Start()
 	{
@@ -217,10 +216,6 @@ public class Player : MonoBehaviour
 			hasKey = false;
 		}
 
-		if (other.gameObject.CompareTag("Safe Zone"))
-		{
-			safeZoned = true;
-		}
 		/*if (other.gameObject.CompareTag("Key"))
 		{
 			Cursor.lockState = CursorLockMode.None;
@@ -231,13 +226,5 @@ public class Player : MonoBehaviour
             PauseMenu.paused = true;
 		}
 		*/
-	}
-
-	public void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.CompareTag("Safe Zone"))
-		{
-			safeZoned = false;
-		}
 	}
 }

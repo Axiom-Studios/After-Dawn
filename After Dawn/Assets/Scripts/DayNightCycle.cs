@@ -14,16 +14,13 @@ public class DayNightCycle : MonoBehaviour
     public GameObject sun;
     public GameObject tutBarrier;
     Vector3 rot;
-    public static float shadowTime = 0f;
-    // NOTICE: day time is controlled by shadowTime NOT Time.time
     public static float initialSunset;
     // Start is called before the first frame update
     void Start()
     {
         day = 0;
         dayLength = 120f;
-        shadowTime = Time.time;
-        sunset = shadowTime + dayLength;
+        sunset = Time.time + dayLength;
         initialSunset = sunset;
         rot = transform.rotation.eulerAngles;
     }
@@ -31,10 +28,6 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Player.safeZoned)
-        {
-            shadowTime += Time.deltaTime;
-        }
         //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
         if (Time.time >= sunset)
         {
@@ -55,7 +48,7 @@ public class DayNightCycle : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0f;
             PauseMenu.paused = true;
-            sunset = shadowTime + dayLength;
+            sunset = Time.time + dayLength;
             initialSunset = sunset;
             if (day > 0)
             {
@@ -70,8 +63,8 @@ public class DayNightCycle : MonoBehaviour
         float preRotZ = rot.z;
 
         //determines the position of the sun by rotating it around the worlds z-axis. Rotation is proportional to dayLength, allowing changable lengths of day.
-        sunset = Mathf.Clamp(sunset, 0f, initialSunset + shadowTime);
-        rot.z = (((sunset - shadowTime) / dayLength) * 180) - 190;
+        sunset = Mathf.Clamp(sunset, 0f, initialSunset + Time.time);
+        rot.z = (((sunset - Time.time) / dayLength) * 180) - 190;
 
         // make rot.z positive
         rot.z = rot.z % 360;
