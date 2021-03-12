@@ -41,6 +41,7 @@ public class DayNightCycle : MonoBehaviour
             else
             {
                 dayLength += 20f;
+                Player.beacons = 0;
                 failText.SetActive(true);
             }
             night = true;
