@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
 		}*/
 		speed = walkSpeed;
 		keys = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-		if (!(PauseMenu.paused))
+		if (!(PauseMenu.paused) && !(CutsceneControl.active))
 		{
 			horizontalRotation += Input.GetAxis("Mouse X") * camSpeed;
 			verticalRotation += Input.GetAxis("Mouse Y") * camSpeed;
