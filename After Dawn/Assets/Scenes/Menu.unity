@@ -740,6 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 715424407}
   - component: {fileID: 715424408}
+  - component: {fileID: 715424409}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -779,6 +780,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d7514e99af54ef4986ae5c0175041ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCutscene:
+  - {fileID: 2800000, guid: e984006c48b271a4ab7e0be8817bd2ee, type: 3}
+  - {fileID: 2800000, guid: f70a55653c167b341929283ba3c62219, type: 3}
+  - {fileID: 2800000, guid: 3a7f0586af3cf9045b2d8a35ad35e357, type: 3}
+  - {fileID: 2800000, guid: 0f885077c00c3e04c8b08c7a2fb1d1af, type: 3}
+  - {fileID: 2800000, guid: e5a6fd928511581419dce43935c42635, type: 3}
+  - {fileID: 2800000, guid: 8d36aaf7e4ecc6f48969ce001a19567d, type: 3}
+  started: 0
+--- !u!114 &715424409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715424406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294948ef27c42cf4b9c38a54790d50cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &838582530

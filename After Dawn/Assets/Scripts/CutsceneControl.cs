@@ -21,10 +21,9 @@ public class CutsceneControl : MonoBehaviour
 		buttons.SetActive(false);
 	}
 
-	void Update(){
-	}
 
 	public static void Initialize(List<Texture> textureList, int cutsceneLength){
+		Time.timeScale = 0f;
 		active = true;
 		textures = textureList;
 		length = cutsceneLength;
@@ -41,6 +40,7 @@ public class CutsceneControl : MonoBehaviour
 			cutsceneImage.texture = textures[imageNum];
 		}
 		else{
+			Time.timeScale = 1f;
 			active = false;
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
