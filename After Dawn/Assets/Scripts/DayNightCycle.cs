@@ -37,7 +37,7 @@ public class DayNightCycle : MonoBehaviour
         if (shadowTime >= sunset)
         {
             night = true;
-            if (Player.passed)
+            if (Player.passed && !(day > 2))
             {
                 day += 1;
                 dayLength -= 20f;
