@@ -36,7 +36,7 @@ public class DayNightCycle : MonoBehaviour
             shadowTime += Time.deltaTime;
         }
         //toggles day and night and sets a new time to do so. Sunset can technically be sunrise, too.
-        if (shadowTime >= sunset)
+        if (Time.time >= sunset)
         {
             night = true;
             if (Player.passed && !(day > 2))
@@ -56,6 +56,7 @@ public class DayNightCycle : MonoBehaviour
             Time.timeScale = 0f;
             PauseMenu.paused = true;
             sunset = shadowTime + dayLength;
+            initialSunset = sunset;
             if (day > 0)
             {
                 tutBarrier.SetActive(true);

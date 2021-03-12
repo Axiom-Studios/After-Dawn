@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
 			{
 				transform.position = spawn;
 				sleeping = false;
+				passed = false;
 			}
 			darkness.SetActive(false);
 		}
@@ -195,7 +196,7 @@ public class Player : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Camp") && hasKey)
 		{
-			if (DayNightCycle.day == 3)
+			if (DayNightCycle.day > 3)
 			{
 				Cursor.lockState = CursorLockMode.None;
             	Cursor.visible = true;
