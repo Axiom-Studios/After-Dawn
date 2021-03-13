@@ -31,7 +31,7 @@ public class LumineOrb : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             DialogueManager.orbs += 1;
-            Player.walkSpeed += 0.5f;
+            Player.walkSpeed += 0.65f;
             transform.Translate(0, -100, 0);
             collected = true;
 			source.Play();
