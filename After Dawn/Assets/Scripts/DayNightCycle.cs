@@ -32,7 +32,7 @@ public class DayNightCycle : MonoBehaviour
         if (Time.time >= sunset)
         {
             night = true;
-            if (Player.passed && !(day > 2))
+            if (Player.passed && !(Player.gameWon))
             {
                 day += 1;
                 dayLength -= 20f;
@@ -40,8 +40,11 @@ public class DayNightCycle : MonoBehaviour
             }
             else
             {
-                dayLength += 20f;
-                failText.SetActive(true);
+                if(!Player.gameWon)
+                {
+                    dayLength += 20f;
+                    failText.SetActive(true);
+                }
             }
             night = true;
             Cursor.lockState = CursorLockMode.None;

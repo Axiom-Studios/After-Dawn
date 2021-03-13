@@ -197,17 +197,19 @@ public class Player : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Camp") && hasKey)
 		{
-			if (DayNightCycle.day > 3)
+			if (DayNightCycle.day == 3)
 			{
 				Cursor.lockState = CursorLockMode.None;
             	Cursor.visible = true;
 				gameWon = true;
 				if (DialogueManager.orbs == 51)
 				{
+					passed = true;
 					secretEnding.SetActive(true);
 				}
             	else
 				{
+					passed = true;
 					endText.SetActive(true);
 				}
             	Time.timeScale = 0f;
