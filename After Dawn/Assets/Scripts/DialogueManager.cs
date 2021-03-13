@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Image Canvas;
     public TextMeshProUGUI dialogueText;
     public GameObject dialogueBox;
-    public float messageDuration = 3f;
+    public float messageDuration = 5f;
     public static List<string> sentencesQueue = new List<string>();
 
     public static int orbs;
