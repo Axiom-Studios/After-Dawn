@@ -43,6 +43,7 @@ public class DayNightCycle : MonoBehaviour
                 if(!Player.gameWon)
                 {
                     dayLength += 20f;
+                    Player.beacons = 0;
                     failText.SetActive(true);
                 }
             }
