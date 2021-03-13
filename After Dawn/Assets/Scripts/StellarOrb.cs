@@ -41,8 +41,8 @@ public class StellarOrb : MonoBehaviour
             if (!DialogueManager.stellarExplained)
             {
                 DialogueManager.sentencesQueue.Clear();
-                DialogueManager.sentencesQueue.Add("Purple orbs seem to allow you to place a beacon");
-                DialogueManager.sentencesQueue.Add("Right click to place on in your current location");
+                DialogueManager.sentencesQueue.Add("Purple orbs allow you to place a beacon");
+                DialogueManager.sentencesQueue.Add("Right click to place one in your current location");
                 DialogueManager.stellarExplained = true;
             }
             
