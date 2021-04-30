@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour
 
     // message explained bools
     public static bool timeExplained = false;
+    public static bool teleportExplained = false;
     public static bool stellarExplained = false;
     public static bool soleilExplained = false;
     public static bool lumineExplained = false;
