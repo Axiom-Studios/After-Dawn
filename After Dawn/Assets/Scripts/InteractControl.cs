@@ -3,6 +3,9 @@
 public class InteractControl : MonoBehaviour
 {
 	string InteractName;
+	public GameObject map;
+	bool mapState = false;
+
 
 	new Camera camera;
 	private void Start()
@@ -17,8 +20,11 @@ public class InteractControl : MonoBehaviour
 
 	void Interaction() //Controls calling of interaction functions
 	{
+		map.SetActive(mapState);
 		if (Input.GetButtonDown("Interact"))
 		{
+			mapState = !mapState;
+			/*
 			Ray interact = camera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit interactInfo;
 
@@ -29,7 +35,7 @@ public class InteractControl : MonoBehaviour
 					InteractName = interactInfo.collider.gameObject.name;
 					Invoke(InteractName, 0);
 				}
-			}
+			}*/
 		}
 	}
 
