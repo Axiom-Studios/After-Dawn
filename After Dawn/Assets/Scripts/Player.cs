@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 		if (beacons > 0 && Input.GetButtonDown("Fire2"))
 		{
+			InteractControl.beacons.Add(new Vector2(transform.position.x, transform.position.y));
 			Instantiate(beaconPrefab, transform.position, transform.rotation);
 			beacons -= 1;
 		}
