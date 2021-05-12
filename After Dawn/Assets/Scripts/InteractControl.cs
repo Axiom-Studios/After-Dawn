@@ -7,7 +7,7 @@ public class InteractControl : MonoBehaviour
 	public GameObject map;
 	public static List<Vector2> beacons;
 	Texture2D mapTexture;
-	bool mapState = false;
+	public static bool mapState = false;
 	
 
 

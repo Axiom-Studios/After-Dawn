@@ -26,7 +26,7 @@ public class SoundControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.keys != Vector3.zero && mainCamera.enabled){
+        if (Player.keys != Vector3.zero && mainCamera.enabled && !InteractControl.mapState){
 			if ((Time.time - lastStep) >= rate){
 				stepSource.clip = footsteps[Random.Range(0, footsteps.Count - 1)];
 				stepSource.Play();
