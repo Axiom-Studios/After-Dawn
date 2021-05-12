@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		if (SkyOrb.skyActive || InteractControl.mapState) 
+		if (InteractControl.mapState) 
 		{
 			rb.velocity = Vector3.zero;
 			transform.localRotation = Quaternion.Euler(0, 0, 0);
