@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
 	float bootTime = 0f;
 	bool mouseLearned = false;
 	bool wasdLearned = false;
+	bool mapLearned = false;
 
 	private void Start()
 	{
@@ -79,6 +80,16 @@ public class Player : MonoBehaviour
 		{
 			DialogueManager.sentencesQueue.Add("Use WASD to move.");
 			wasdLearned = true;
+		}
+
+		if (Input.GetButtonDown("Interact"))
+		{
+			mapLearned = true;
+		}
+		if (Time.time - bootTime >= 15 && !mapLearned)
+		{
+			DialogueManager.sentencesQueue.Add("Press E to open the map.");
+			mapLearned = true;
 		}
 		//sprint.value = stamina;
 		if (DayNightCycle.night)
