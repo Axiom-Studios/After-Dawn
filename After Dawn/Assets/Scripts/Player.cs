@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
 	float bootTime = 0f;
 	bool mouseLearned = false;
 	bool wasdLearned = false;
+	bool mapLearned = false;
 
 	private void Start()
 	{
@@ -79,6 +80,16 @@ public class Player : MonoBehaviour
 		{
 			DialogueManager.sentencesQueue.Add("Use WASD to move.");
 			wasdLearned = true;
+		}
+
+		if (Input.GetButtonDown("Interact"))
+		{
+			mapLearned = true;
+		}
+		if (Time.time - bootTime >= 15 && !mapLearned)
+		{
+			DialogueManager.sentencesQueue.Add("Press E to open the map.");
+			mapLearned = true;
 		}
 		//sprint.value = stamina;
 		if (DayNightCycle.night)
@@ -129,13 +140,14 @@ public class Player : MonoBehaviour
 		verticalRotation = Mathf.Clamp(verticalRotation, -60, 70);
 		if (beacons > 0 && Input.GetButtonDown("Fire2"))
 		{
+			InteractControl.beacons.Add(new Vector2(transform.position.x, transform.position.y));
 			Instantiate(beaconPrefab, transform.position, transform.rotation);
 			beacons -= 1;
 		}
 	}
 	void FixedUpdate()
 	{
-		if (SkyOrb.skyActive) 
+		if (InteractControl.mapState) 
 		{
 			rb.velocity = Vector3.zero;
 			transform.localRotation = Quaternion.Euler(0, 0, 0);
